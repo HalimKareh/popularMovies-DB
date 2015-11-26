@@ -1,45 +1,56 @@
 package com.example.halimkareh.popularmovies;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
-    static TextView t1;
 
-    public static Movie[] moviesArray=new Movie[9];
-    private GridView movie_poster_grid;
-    private ImageView imageView1;
 
+/*
+    public static TextView t1;
+    public static ImageView i1;
+
+    public static TextView t2;
+    public static ImageView i2;
+
+    public static TextView t3;
+    public static ImageView i3;
+*/
+    public static CustomGridViewAdapter customGridAdapter;
+    public static GridView movie_grid;
+    public static Context context;
 
     @Override
-    protected void onCreate(Bundle
-                                        savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*
+        movie_grid = (GridView)findViewById(R.id.movies_grid);
 
-        setSupportActionBar(toolbar);
-        t1= (TextView)findViewById(R.id.test);
+        t1= (TextView)findViewById(R.id.text1);
+        i1 =(ImageView)findViewById(R.id.movie_poster_1);
+
+        t2= (TextView)findViewById(R.id.text2);
+        i2 =(ImageView)findViewById(R.id.movie_poster_2);
+
+        t3= (TextView)findViewById(R.id.text3);
+        i3 =(ImageView)findViewById(R.id.movie_poster_3);
+        */
         String topRated="http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&&api_key=4d081fefd27c8fe3e0bbeb0ada19925e";
         String APIKey = "4d081fefd27c8fe3e0bbeb0ada19925e";
 
-
-       // movie_poster_grid=(GridView)findViewById(R.id.movie_poster_grid);
+        movie_grid=(GridView)findViewById(R.id.movies_grid);
+        context=this;
+        // movie_poster_grid=(GridView)findViewById(R.id.movie_poster_grid);
         moviesAsyncTask hello = new moviesAsyncTask();
         hello.execute(topRated);
-        ImageView i1 =(ImageView)findViewById(R.id.movie_poster_1);
-        Picasso.with(this).load("http://image.tmdb.org/t/p/w185/D6e8RJf2qUstnfkTslTXNTUAlT.jpg").into(i1);
 
 
 
@@ -66,4 +77,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
