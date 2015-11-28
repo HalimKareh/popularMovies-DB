@@ -1,7 +1,7 @@
-package com.example.halimkareh.popularmovies;
+package com.example.android.sunshine.app;
 
 /**
- * Created by HALIM on 11/22/2015.
+ * Created by HALIM on 11/28/2015.
  */
 public class Movie
 {
@@ -21,7 +21,11 @@ public class Movie
 
     public Movie(String title, String poster, String overview) {
         this.title = title;
-        this.poster = poster;
+        this.poster = "http://image.tmdb.org/t/p/w500/"+poster;
         this.overview = overview;
     }
+    public Movie(){
+
+    }
 }
+
